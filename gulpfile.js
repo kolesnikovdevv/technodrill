@@ -1,4 +1,4 @@
-const { src, dest, parallel, watch } = require("gulp");
+const { src, dest, parallel, watch, series } = require("gulp");
 
 const scss = require("gulp-sass")(require("sass"));
 const concat = require("gulp-concat");
@@ -12,6 +12,7 @@ function styles() {
     .pipe(scss({ outputStyle: "compressed" }))
     .pipe(concat("style.min.css"))
     .pipe(dest(sourceFiles + "/css"))
+    .pipe(dest(sourceFiles + "/build/css/"))
     .pipe(browserSync.stream());
 }
 
@@ -26,6 +27,7 @@ function browserSyncF() {
 function html() {
   return src(sourceFiles + "/pages/*.html")
     .pipe(fileInclude())
+    .pipe(dest(sourceFiles + "/build/"))
     .pipe(dest(sourceFiles + "/"))
     .pipe(browserSync.stream());
 }
@@ -56,11 +58,10 @@ function vendorCSS() {
   return src(modules).pipe(dest("app/build/css/pages"));
 }
 
-exports.default = parallel(
-  styles,
-  html,
-  browserSyncF,
-  watching,
-  vendorJS,
-  vendorCSS
+const build = series(parallel(styles, vendorJS, vendorCSS, html));
+const dev = series(
+  parallel(styles, html, browserSyncF, watching, vendorJS, vendorCSS)
 );
+
+exports.default = dev;
+exports.build = build;

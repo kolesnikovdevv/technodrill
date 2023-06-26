@@ -1,0 +1,74 @@
+<div id="popupIndex" class="popup">
+  <div class="popup__bg"></div>
+  <div class="popup__body hide">
+    <div class="popup__close">
+      <svg
+        width="23"
+        height="23"
+        viewBox="0 0 23 23"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M1 1L22 22" stroke="black" stroke-width="2.37736" />
+        <path d="M22 1L1 22" stroke="black" stroke-width="2.37736" />
+      </svg>
+    </div>
+    <div class="popup__form">
+      <div class="popup__item">
+        <label for="inputName">Ваше имя</label>
+        <input
+          id="inputName"
+          class="popup__input"
+          placeholder="Введите ваше имя"
+        />
+      </div>
+      <div class="popup__item">
+        <label for="inputEmail">E-mail</label>
+        <input
+          id="inputEmail"
+          class="popup__input"
+          placeholder="Введите ваш e-mail"
+        />
+      </div>
+      <div class="popup__item">
+        <label for="inputPhone">Ваш телефон</label>
+        <input
+          id="inputPhone"
+          class="popup__input"
+          placeholder="Введите ваш телефон"
+        />
+      </div>
+      <button class="popup__send">Оставить заявку</button>
+      <p class="popup__helper-text">
+        Нажимая на кнопку, Вы принимаете Положение и Согласие на обработку
+        персональных данных
+      </p>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document
+      .getElementsByClassName("popup__button")[0]
+      .addEventListener("click", () => {
+        document.getElementById("popupIndex").classList.add("open");
+        document.querySelector(".popup__body").classList.remove("hide");
+        document.getElementsByClassName("popup")[0].style.zIndex = "101";
+      });
+
+    document
+      .getElementsByClassName("popup__bg")[0]
+      .addEventListener("click", () => {
+        document.getElementById("popupIndex").classList.remove("open");
+        document.getElementsByClassName("popup")[0].style.zIndex = "-1";
+      });
+
+    document
+      .getElementsByClassName("popup__close")[0]
+      .addEventListener("click", () => {
+        document.getElementById("popupIndex").classList.remove("open");
+        document.querySelector(".popup__body").classList.add("hide");
+        document.getElementsByClassName("popup")[0].style.zIndex = "-1";
+      });
+  });
+</script>

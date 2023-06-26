@@ -1,0 +1,241 @@
+@import "_global";
+@import "reset";
+@import "var";
+@import "index";
+@import "product-catalog";
+@import "product-catalog-about";
+@import "spare-parts";
+@import "product-about";
+@import "news";
+@import "paginator";
+@import "../scss/components/footer.scss";
+@import "../scss/components/header.scss";
+@import "_fancybox.scss";
+
+/*----------------------------------------*/
+.page-padding {
+  padding: 0 440px;
+
+  &__left {
+    padding: 0 0 0 440px;
+  }
+}
+
+.popup {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s 0.5s linear, z-index 0.01s 0.5s linear;
+  &__bg {
+    transition: all 0.5s 0.5s linear;
+  }
+  &__body {
+    transition: all 0.5s linear;
+    position: fixed;
+    top: -700px;
+    left: calc(50% - 518px / 2);
+    padding: 50px;
+    background-color: white;
+    box-shadow: 0 0 50px rgba(21, 60, 83, 0.2);
+    opacity: 0;
+    width: 100%;
+    height: max-content;
+    max-width: 518px;
+    max-height: 687px;
+    z-index: 1001;
+  }
+  &__close {
+    width: 50px;
+    height: 50px;
+    background: #ffd832;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    margin-top: -20px;
+    margin-right: -20px;
+    right: 0;
+    top: 0;
+  }
+  &__form {
+    @extend %spare_form;
+  }
+  &__item {
+    @extend %spare_form-item;
+  }
+  &__input {
+    @extend %spare_form-input;
+    @include transition();
+  }
+  &__send {
+    @extend %spare_form-send;
+  }
+  &__helper-text {
+    @extend %spare_form-text;
+  }
+  &.open {
+    transition: all 0.5s linear, z-index 0.01s 0s linear;
+    .popup__bg {
+      transition: all 0.5s linear;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: black;
+      opacity: 0.6;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+    }
+    .popup__body {
+      transition: all 0.5s ease-in-out;
+      top: calc(50vh - 300px);
+      opacity: 1;
+    }
+  }
+}
+
+@media (max-width: 1950px) {
+  .page-padding {
+    padding: 0 250px;
+
+    &__left {
+      padding: 0 0 0 250px;
+    }
+
+    &__right {
+      padding-right: 250px;
+    }
+  }
+}
+
+@media (max-width: 1800px) {
+  .page-padding {
+    padding: 0 200px;
+
+    &__left {
+      padding: 0 0 0 200px;
+    }
+
+    &__right {
+      padding-right: 200px;
+    }
+  }
+}
+
+@media (max-width: 1600px) {
+  .page-padding {
+    padding: 0 120px;
+
+    &__left {
+      padding: 0 0 0 120px;
+    }
+
+    &__right {
+      padding-right: 120px;
+    }
+  }
+}
+
+@media (max-width: 1400px) {
+  .page-padding {
+    padding: 0 75px;
+
+    &__left {
+      padding: 0 0 0 75px;
+    }
+
+    &__right {
+      padding-right: 75px;
+    }
+  }
+}
+
+@media (max-width: 930px) {
+  .page-padding {
+    padding: 0 30px;
+
+    &__left {
+      padding: 0 0 0 30px;
+    }
+
+    &__right {
+      padding-right: 30px;
+    }
+  }
+}
+
+@media (max-width: 630px) {
+  .page-padding {
+    padding: 0 15px;
+
+    &__left {
+      padding: 0 0 0 15px;
+    }
+
+    &__right {
+      padding-right: 15px;
+    }
+  }
+  .modal__info {
+    padding: 35px 10% 35px 40px;
+  }
+  .main-about__doc {
+    display: contents;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 550px) {
+  .popup {
+    &__body {
+      padding: 50px 30px 45px;
+      width: 90%;
+      left: 5%;
+      max-height: 92vh;
+    }
+    &.open {
+      .popup__body {
+        top: 4%;
+      }
+    }
+    &__input {
+      font-size: 14px;
+    }
+    &__form {
+      overflow: hidden;
+      overflow-y: auto;
+      max-height: 78vh;
+    }
+    &__send {
+      padding: 20px;
+      font-size: 16px;
+    }
+
+    &__helper-text {
+      font-size: 12px;
+      line-height: 22px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .modal__info {
+    padding: 35px 20px 35px 30px;
+  }
+  .page-padding {
+    padding: 0 5px;
+
+    &__left {
+      padding: 0 0 0 5px;
+    }
+
+    &__right {
+      padding-right: 5px;
+    }
+  }
+}

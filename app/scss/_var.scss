@@ -1,0 +1,76 @@
+$red_button: #d82329;
+$text: #1d1717;
+
+@mixin transition {
+  transition: all 0.3s;
+}
+
+@mixin transform {
+  transform: scale(1.05);
+}
+
+@mixin transformS($scale) {
+  transform: scale($scale);
+}
+
+%spare_form {
+  display: flex;
+  flex-direction: column;
+  label {
+    font-weight: 600;
+    font-size: 18px;
+    color: #0b2432;
+  }
+}
+
+%spare_form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 27px;
+}
+
+%spare_form-input {
+  padding: 20px 30px;
+  font-weight: 400;
+  font-size: 16px;
+  border: 1px solid #343434;
+  border-radius: 2px;
+  outline: none;
+  &:focus {
+    border: 1px solid rgba(#343434, 0.5);
+  }
+}
+
+%spare_form-send {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  color: #ffffff;
+  color: #2b250d;
+  border: none;
+  background: #ffd832;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 27px;
+  margin: 16px 0 40px;
+  @media (max-width: 576px) {
+    padding: 20px 0;
+    margin-bottom: 40px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 30px;
+  }
+}
+
+%spare_form-text {
+  font-weight: 400;
+  font-size: 14px;
+  cursor: default;
+  color: #000000;
+  @media (max-width: 576px) {
+    font-size: 12px;
+    line-height: 22px;
+  }
+}

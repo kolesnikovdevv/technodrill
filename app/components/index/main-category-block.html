@@ -1,0 +1,136 @@
+<section class="main-category page-padding">
+  <div class="main-category__head">
+    <h3 class="main-category__title">Каталог техники</h3>
+    <a href="/product-catalog.html" class="main-category__link"
+      >Перейти в каталог техники</a
+    >
+  </div>
+  <div class="main-category__carousel swiper">
+    <div class="main-category__cards swiper-wrapper">
+      <a href="" class="main-category__card swiper-slide">
+        <img src="../../img/card/2.png" alt="" />
+        <p class="">Триплексные насосы</p>
+      </a>
+      <a href="" class="main-category__card swiper-slide">
+        <img src="../../img/card/2.png" alt="" />
+        <p class="">Триплексные насосы</p>
+      </a>
+      <a href="" class="main-category__card swiper-slide">
+        <img src="../../img/card/2.png" alt="" />
+        <p class="">Триплексные насосы</p>
+      </a>
+      <a href="" class="main-category__card swiper-slide">
+        <img src="../../img/card/3.png" alt="" />
+        <p class="">Триплексные насосы</p>
+      </a>
+      <a href="" class="main-category__card swiper-slide">
+        <img src="../../img/card/3.png" alt="" />
+        <p class="">Триплексные насосы</p>
+      </a>
+    </div>
+    <button class="main-category__more-button">
+      Загрузить больше
+      <div class="main-category__more-arrow">
+        <svg
+          width="21"
+          height="21"
+          viewBox="0 0 21 21"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M17.5 10.5L10.5 17.5L9.25312 16.275L14.1531 11.375H3.5V9.625H14.1531L9.25312 4.725L10.5 3.5L17.5 10.5Z"
+            fill="#2B250D"
+          />
+        </svg>
+      </div>
+    </button>
+    <div class="swiper-button-prev">
+      <svg
+        width="21"
+        height="21"
+        viewBox="0 0 21 21"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M3.5 10.5L10.5 17.5L11.7469 16.275L6.84688 11.375H17.5V9.625H6.84688L11.7469 4.725L10.5 3.5L3.5 10.5Z"
+          fill="#2B250D"
+        />
+      </svg>
+    </div>
+    <div class="swiper-button-next">
+      <svg
+        width="21"
+        height="21"
+        viewBox="0 0 21 21"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M17.5 10.5L10.5 17.5L9.25312 16.275L14.1531 11.375H3.5V9.625H14.1531L9.25312 4.725L10.5 3.5L17.5 10.5Z"
+          fill="#2B250D"
+        />
+      </svg>
+    </div>
+  </div>
+  <a class="main-category__link main-category__link_mobile"
+    >Перейти в каталог категорий</a
+  >
+</section>
+
+<style>
+  .swiper {
+    width: 100%;
+    height: 325px;
+  }
+</style>
+
+<script type="module">
+  const swiper = new Swiper(".swiper", {
+    // Optional parameters
+    direction: "horizontal",
+    loop: false,
+
+    // If we need pagination
+    pagination: {
+      el: ".swiper-pagination",
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    enabled: false,
+    breakpoints: {
+      // when window width is >= 320px
+      768: {
+        enabled: true,
+        speed: 700,
+        slidesPerView: 1,
+        spaceBetween: 30,
+      },
+      830: {
+        enabled: true,
+        speed: 700,
+        slidesPerView: 2,
+        spaceBetween: 30,
+      },
+      // when window width is >= 480px
+      1200: {
+        enabled: true,
+        speed: 700,
+        slidesPerView: 2,
+        spaceBetween: 30,
+      },
+      // when window width is >= 640px
+      1400: {
+        enabled: true,
+        speed: 700,
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+    },
+  });
+</script>

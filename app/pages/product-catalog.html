@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+    <!--    <link rel="stylesheet" href="css/reset.css">-->
+    <!--    <link rel="stylesheet" href="css/_global.css">-->
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="icon" href="../img/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
+    @@include('../components/header-black.html', {"class": "base"})
+    <main class="main product-catalog__wrapper">
+        <div class="page-padding">
+            <div class="product-catalog">
+                <div class="product-catalog__top">
+                    <p>Каталог техники</p>
+                </div>
+                <div class="product-catalog__wrapper">
+                    <div class="product-catalog__card-lists">
+                        <a class="product-catalog__card" href="#">
+                            <img class="product-catalog__img" src="img/product-catalog/1.png" alt="">
+                            <div class="product-catalog__title">Триплексные насосы</div>
+                        </a>
+                        <a class="product-catalog__card" href="#">
+                            <img class="product-catalog__img" src="img/product-catalog/2.png" alt="">
+                            <div class="product-catalog__title">Смесительные агрегаты</div>
+                        </a>
+                        <a class="product-catalog__card" href="#">
+                            <img class="product-catalog__img" src="img/product-catalog/3.png" alt="">
+                            <div class="product-catalog__title">Компактные системы
+                                для струйной цементации
+                                Jet Grouting
+                            </div>
+                        </a>
+                        <a class="product-catalog__card" href="#">
+                            <img class="product-catalog__img" src="img/product-catalog/4.png" alt="">
+                            <div class="product-catalog__title">Инъекционные агрегаты</div>
+                        </a>
+                        <a class="product-catalog__card" href="#">
+                            <img class="product-catalog__img" src="img/product-catalog/5.png" alt="">
+                            <div class="product-catalog__title">Триплексные насосы</div>
+                        </a>
+                        <a class="product-catalog__card" href="#">
+                            <img class="product-catalog__img" src="img/product-catalog/6.png" alt="">
+                            <div class="product-catalog__title">Контейнерные инъекционные агрегаты</div>
+                        </a>
+                        <a class="product-catalog__card" href="#">
+                            <img class="product-catalog__img" src="img/product-catalog/7.png" alt="">
+                            <div class="product-catalog__title">Силосы для сыпучих материалов</div>
+                        </a>
+                        <a class="product-catalog__card" href="#">
+                            <img class="product-catalog__img" src="img/product-catalog/8.png" alt="">
+                            <div class="product-catalog__title">Буровая колонна</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @@include('../components/paginator.html')
+        </div>
+    </main>
+    @@include('../components/footer.html')
+</div>
+</body>
+</html>

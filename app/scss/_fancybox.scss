@@ -1,0 +1,54 @@
+.fancybox__container {
+  --fancybox-color: #0d0c22;
+  --fancybox-bg: #fff;
+  --f-spinner-color-1: rgba(0, 0, 0, 0.1);
+  --f-spinner-color-2: rgba(17, 24, 28, 0.8);
+
+  flex-direction: column-reverse;
+}
+
+.fancybox__toolbar {
+  --f-button-bg: #f3f3f4;
+  --f-button-hover-bg: #e7e7e9;
+  --f-button-active-bg: #e7e7e9;
+  --f-button-color: #0d0c22;
+  --f-button-hover-color: #0d0c22;
+
+  --f-button-border-radius: 8px;
+
+  --f-button-svg-width: 20px;
+  --f-button-svg-height: 20px;
+
+  --f-button-svg-stroke-width: 1.5;
+  --f-button-svg-filter: none;
+
+  padding: 30px;
+  z-index: 10;
+}
+
+.fancybox__slide {
+  padding: 12px 0px;
+}
+
+.fancybox__thumbs.is-classic {
+  --f-thumb-gap: 3px;
+  --f-thumb-width: 88px;
+  --f-thumb-height: 66px;
+  --f-thumb-opacity: 1;
+  --f-thumb-outline: 3px;
+  --f-thumb-outline-color: #ea4c89;
+  --f-thumb-border-radius: 6px;
+  --f-thumb-offset: 4px;
+
+  padding: 10px 100px 10px 26px;
+  border-bottom: 2px solid #f3f3f4;
+}
+
+/* Align thumbnails on right side if not draggable */
+.f-thumbs__viewport:not(.is-draggable) .f-thumbs__track {
+  justify-content: flex-end;
+}
+
+.f-thumbs__slide__img {
+  border-radius: 7px;
+}

@@ -32,6 +32,6 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.DEPLOY_KEY }}
-          source: "./app/build/"
+          source: "./app/"
           target: "/var/www/technodrill"
           strip_components: 2

@@ -24,7 +24,7 @@ jobs:
         run: npm ci
 
       - name: Run Gulp build
-        run: npx gulp build
+        run: npm run build
 
       - name: Copy files via SSH key
         uses: appleboy/scp-action@master

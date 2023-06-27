@@ -805,6 +805,56 @@
 
 @media (max-width: 1400px) {
   .main {
+    &-about {
+      &__preview {
+        img {
+          max-height: 445px;
+          min-height: 445px;
+        }
+      }
+      &__title {
+        line-height: 100%;
+        margin-bottom: 42px;
+      }
+      &__item {
+        max-height: 135px;
+        min-height: 135px;
+        padding: 18px 30px;
+        margin-bottom: 20px;
+      }
+      &__item-icon {
+        margin-right: 25px;
+        svg,
+        img {
+          max-width: 58px;
+          max-height: 58px;
+          min-width: 58px;
+          min-height: 58px;
+        }
+      }
+      &__item-text {
+        max-width: 100%;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 30px;
+        color: #ffffff;
+      }
+      &__info-block {
+        margin-right: 20px;
+      }
+      &__text_white {
+        text-align: center;
+      }
+      &__blue-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      &__manufacture-photo {
+        margin-right: 0;
+        margin-bottom: 40px;
+      }
+    }
     &-about_more {
       &__item {
         margin-right: 17px;
@@ -850,6 +900,10 @@
 
     &-about {
       padding: 0 30px 20px 30px;
+      &__excavations {
+        min-height: 100%;
+        min-height: 370px;
+      }
     }
 
     &-help {
@@ -892,6 +946,8 @@
   }
 }
 @media (max-width: 1024px) {
+  .main-about {
+  }
   .main-about-big__img {
     max-width: none;
     width: 100%;
@@ -991,11 +1047,34 @@
         display: block;
         margin: 0 auto;
       }
+      &__items {
+        margin-right: 25px;
+      }
+      &__item-icon {
+        margin-right: 15px;
+        svg,
+        img {
+          max-width: 38px;
+          max-height: 38px;
+          min-width: 38px;
+          min-height: 38px;
+        }
+      }
+      &__item-text {
+        max-width: 100%;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 25px;
+        color: #ffffff;
+      }
+      &__preview {
+        width: calc(60% - 25px);
+      }
 
       &__title {
         font-weight: 600;
         font-size: 40px;
-        line-height: 26px;
+        line-height: 44px;
       }
 
       &__name {
@@ -1010,7 +1089,9 @@
         line-height: 26px;
         margin: 0 auto;
       }
-
+      &__excavations {
+        min-height: 400px;
+      }
       &__info {
         margin-bottom: 50px;
         text-align: center;
@@ -1404,6 +1485,7 @@
           border-radius: 10px;
           width: 100%;
           object-fit: cover;
+          min-height: 0;
           max-height: 300px;
         }
       }

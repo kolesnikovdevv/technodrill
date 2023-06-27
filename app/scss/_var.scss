@@ -1,6 +1,19 @@
 $red_button: #d82329;
 $text: #1d1717;
 
+@function calc-between-width(
+  $width-start,
+  $value-start,
+  $width-end,
+  $value-end
+) {
+  @return calc(
+    #{$value-start} * 1px + (#{$value-end} - #{$value-start}) * (
+        100vw - #{$width-start} * 1px
+      ) / (#{$width-end} - #{$width-start})
+  );
+}
+
 @mixin transition {
   transition: all 0.3s;
 }

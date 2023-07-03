@@ -1,52 +1,62 @@
-<section class="main-spare page-padding">
-  <div class="main-spare__container">
-    <div class="main-spare__info">
-      <div class="main-spare__title">
-        Запасные части <br />
-        и расходные<br />
-        материалы
+<section class="main-spare">
+  <div class="main-spare__body page-padding">
+    <div class="main-spare__container">
+      <div class="main-spare__info">
+        <div class="main-spare__title">
+          Запасные части <br />
+          и расходные<br />
+          материалы
+        </div>
+        <div class="main-spare__text">
+          «TechnoDrill» представляет Вашему <br />
+          вниманию каталог запасных частей и расходных материалов, доступных к
+          заказу
+        </div>
+        <a class="main-spare__button" href="">Перейти в каталог запчастей</a>
       </div>
-      <div class="main-spare__text">
-        «TechnoDrill» представляет Вашему <br />
-        вниманию каталог запасных частей и расходных материалов, доступных к
-        заказу
-      </div>
-      <a class="main-spare__button" href="">Перейти в каталог запчастей</a>
+      <!-- <img class="main-spare__img_back" src="img/spare/01.png" alt=""> -->
     </div>
-    <!-- <img class="main-spare__img_back" src="img/spare/01.png" alt=""> -->
-  </div>
-  <div class="main-spare__images">
-    <a
-      class="main-spare__preview"
-      data-fancybox="gallery"
-      href="../../img/content1/1.png"
-    >
-      <img class="rounded" src="../../img/content1/1.png" />
-    </a>
-    <div class="main-spare__preview blur">
-      <img class="rounded" src="../../img/content1/1.png" />
-    </div>
-    <div class="main-spare__gallery">
-      <div class="main-spare__gallery-item">
-        <div class="main-spare__gallery-focus"></div>
+    <div class="main-spare__images">
+      <a
+        class="main-spare__preview"
+        id="sparePreview"
+        data-fancybox="gallery"
+        href="../../img/content1/1.png"
+      >
+        <img class="rounded" src="../../img/content1/1.png" />
+      </a>
+      <div class="main-spare__preview blur" id="sparePreview">
         <img class="rounded" src="../../img/content1/1.png" />
       </div>
-
-      <div class="main-spare__gallery-item">
-        <div class="main-spare__gallery-focus"></div>
-        <img class="rounded" src="../../img/content1/1.png" />
-      </div>
-      <div class="main-spare__gallery-item">
-        <div class="main-spare__gallery-focus"></div>
-        <img class="rounded" src="../../img/content1/1.png" />
-      </div>
-      <div class="main-spare__gallery-item">
-        <div class="main-spare__gallery-focus"></div>
-        <img class="rounded" src="../../img/content1/1.png" />
+      <div class="main-spare__gallery">
+        <div class="main-spare__gallery-item">
+          <div class="main-spare__gallery-focus"></div>
+          <img class="rounded" src="../../img/content1/1.png" />
+        </div>
+        <div class="main-spare__gallery-item">
+          <div class="main-spare__gallery-focus"></div>
+          <img class="rounded" src="../../img/spare/02.png" />
+        </div>
+        <div class="main-spare__gallery-item">
+          <div class="main-spare__gallery-focus"></div>
+          <img class="rounded" src="../../img/spare/01.png" />
+        </div>
       </div>
     </div>
   </div>
 </section>
+<script>
+  const galleryItems = document.querySelectorAll(".main-spare__gallery-item");
+  const galleryPreview = document.getElementById("sparePreview");
+  galleryItems.forEach((item) => {
+    item.addEventListener("click", (event) => {
+      console.log(event.target.nextElementSibling.src);
+      galleryPreview.href = event.target.nextElementSibling.src;
+      galleryPreview.querySelector("img").src =
+        event.target.nextElementSibling.src;
+    });
+  });
+</script>
 <!-- 
 <script type="module">
   import { Fancybox } from "@fancyapps/ui/dist/fancybox/fancybox.esm.js";

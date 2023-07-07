@@ -1,11 +1,33 @@
 .splitter {
   width: 100%;
-  opacity: 0.4;
-  border: 1px solid #202122;
-
+  opacity: 1;
+  border: 1px solid #20212266;
+  position: relative;
+  &::after {
+    transition: all 0.5s linear;
+    content: "";
+    background: #ffd832;
+    opacity: 1;
+    min-height: 2px;
+    min-width: 0;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+  }
   &__white {
-    opacity: 0.4;
-    border: 1px solid #ffffff;
+    opacity: 1;
+    border: 1px solid #ffffff77;
+    position: relative;
+    &::after {
+      transition: all 0.5s linear;
+      content: "";
+      background: #ffd832;
+      opacity: 1;
+      min-height: 1px;
+      min-width: 0;
+      position: absolute;
+      top: -1px;
+    }
   }
 }
 .modal {
@@ -186,7 +208,7 @@
     align-items: center;
     justify-content: space-between;
     font-size: 16px;
-    gap: 20px;
+    gap: 50px;
   }
 
   // .header__sub-menu-logo
@@ -198,7 +220,6 @@
 
   &__sub-menu-item {
     width: 100%;
-    max-width: 250px;
     font-weight: 500;
     font-size: 16px;
     line-height: 30px;
@@ -209,6 +230,9 @@
     @include transition();
     &:hover {
       @include transform();
+      .splitter__white::after {
+        min-width: 100%;
+      }
     }
     &.active {
       .sub-menu-item__title {
@@ -388,6 +412,9 @@
 
     &:hover {
       @include transform();
+      .splitter::after {
+        min-width: calc(100% + 2px);
+      }
     }
 
     a {

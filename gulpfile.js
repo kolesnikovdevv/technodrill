@@ -1,67 +1,66 @@
-const { src, dest, parallel, watch, series } = require("gulp");
+const { src, dest, parallel, watch } = require('gulp')
 
-const scss = require("gulp-sass")(require("sass"));
-const concat = require("gulp-concat");
-const browserSync = require("browser-sync").create();
-const fileInclude = require("gulp-file-include");
+const scss = require('gulp-sass')(require('sass'))
+const concat = require('gulp-concat')
+const browserSync = require('browser-sync').create()
+const fileInclude = require('gulp-file-include')
 
-const sourceFiles = "app";
+const sourceFiles = 'build'
+
 
 function styles() {
-  return src("app/scss/style.scss")
-    .pipe(scss({ outputStyle: "compressed" }))
-    .pipe(concat("style.min.css"))
-    .pipe(dest(sourceFiles + "/css"))
-    .pipe(dest(sourceFiles + "/build/css/"))
-    .pipe(browserSync.stream());
+    return src('app/scss/style.scss')
+        .pipe(scss({ outputStyle: 'compressed' }))
+        .pipe(concat('style.min.css'))
+        .pipe(dest(sourceFiles + '/css'))
+        .pipe(browserSync.stream())
 }
 
+
 function browserSyncF() {
-  browserSync.init({
-    server: {
-      baseDir: "app/",
-    },
-  });
+    browserSync.init({
+        server: {
+            baseDir: 'build/',
+        },
+    })
 }
 
 function html() {
-  return src(sourceFiles + "/pages/*.html")
-    .pipe(fileInclude())
-    .pipe(dest(sourceFiles + "/build/"))
-    .pipe(dest(sourceFiles + "/"))
-    .pipe(browserSync.stream());
+    return src('app/pages/*.html')
+        .pipe(fileInclude())
+        .pipe(dest(sourceFiles + '/'))
+        .pipe(browserSync.stream())
+}
+
+function img() {
+    return src(['app/img/**/*.{gif,jpg,png,svg}'])
+      .pipe(dest(sourceFiles + '/img'))
 }
 
 function watching() {
-  watch(["app/scss/**/*.scss"], styles);
-  watch(["app/pages/*.html"], html, browserSync.reload);
-  watch(["app/components/**/*.html"], html, browserSync.reload);
+    watch(['app/scss/**/*.scss'], styles)
+    watch(['app/pages/*.html'], html, browserSync.reload)
+    watch(['app/components/**/*.html'], html, browserSync.reload)
 }
 
 function vendorJS() {
-  const modules = [
-    "node_modules/swiper/swiper-bundle.min.js",
-    "node_modules/swiper/swiper-bundle.min.js.map",
-    "node_modules/@fancyapps/ui/dist/fancybox/fancybox.umd.js",
-    "node_modules/@fancyapps/ui/dist/fancybox/fancybox.esm.js",
-  ];
+    const modules = [
+        'node_modules/swiper/swiper-bundle.min.js',
+        'node_modules/swiper/swiper-bundle.min.js.map',
+    ]
 
-  return src(modules).pipe(dest("app/build/js"));
+    return src(modules)
+        .pipe(dest('build/js'))
 }
 
 function vendorCSS() {
-  const modules = [
-    "node_modules/swiper/swiper-bundle.min.css",
-    "node_modules/@fancyapps/ui/dist/fancybox/fancybox.css",
-  ];
+    const modules = [
+        'node_modules/swiper/swiper-bundle.min.css',
+    ]
 
-  return src(modules).pipe(dest("app/build/css/pages"));
+    return src(modules)
+        .pipe(dest('build/css/pages'))
 }
 
-const build = series(parallel(styles, vendorJS, vendorCSS, html));
-const dev = series(
-  parallel(styles, html, browserSyncF, watching, vendorJS, vendorCSS)
-);
+exports.default = parallel(vendorJS, vendorCSS, styles, html, img, browserSyncF, watching)
 
-exports.default = dev;
-exports.build = build;

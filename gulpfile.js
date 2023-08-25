@@ -1,35 +1,39 @@
-const { src, dest, parallel, watch, series } = require("gulp");
+const { src, dest, parallel, watch } = require("gulp");
 
 const scss = require("gulp-sass")(require("sass"));
 const concat = require("gulp-concat");
 const browserSync = require("browser-sync").create();
 const fileInclude = require("gulp-file-include");
 
-const sourceFiles = "app";
+const sourceFiles = "build";
 
 function styles() {
   return src("app/scss/style.scss")
     .pipe(scss({ outputStyle: "compressed" }))
     .pipe(concat("style.min.css"))
     .pipe(dest(sourceFiles + "/css"))
-    .pipe(dest(sourceFiles + "/build/css/"))
     .pipe(browserSync.stream());
 }
 
 function browserSyncF() {
   browserSync.init({
     server: {
-      baseDir: "app/",
+      baseDir: "build/",
     },
   });
 }
 
 function html() {
-  return src(sourceFiles + "/pages/*.html")
+  return src("app/pages/*.html")
     .pipe(fileInclude())
-    .pipe(dest(sourceFiles + "/build/"))
     .pipe(dest(sourceFiles + "/"))
     .pipe(browserSync.stream());
+}
+
+function img() {
+  return src(["app/img/**/*.{gif,jpg,png,svg}"]).pipe(
+    dest(sourceFiles + "/img")
+  );
 }
 
 function watching() {
@@ -46,7 +50,7 @@ function vendorJS() {
     "node_modules/@fancyapps/ui/dist/fancybox/fancybox.esm.js",
   ];
 
-  return src(modules).pipe(dest("app/build/js"));
+  return src(modules).pipe(dest("build/js"));
 }
 
 function vendorCSS() {
@@ -55,13 +59,15 @@ function vendorCSS() {
     "node_modules/@fancyapps/ui/dist/fancybox/fancybox.css",
   ];
 
-  return src(modules).pipe(dest("app/build/css/pages"));
+  return src(modules).pipe(dest("build/css/pages"));
 }
 
-const build = series(parallel(styles, vendorJS, vendorCSS, html));
-const dev = series(
-  parallel(styles, html, browserSyncF, watching, vendorJS, vendorCSS)
+exports.default = parallel(
+  vendorJS,
+  vendorCSS,
+  styles,
+  html,
+  img,
+  browserSyncF,
+  watching
 );
-
-exports.default = dev;
-exports.build = build;

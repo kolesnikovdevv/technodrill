@@ -71,3 +71,5 @@ exports.default = parallel(
   browserSyncF,
   watching
 );
+
+exports.build = parallel(vendorJS, vendorCSS, styles, html, img);
